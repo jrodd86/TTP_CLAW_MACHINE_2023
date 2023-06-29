@@ -1,16 +1,16 @@
 function checkPosition(){
  var position = document.getElementById("claw");
   var directlyAbove;
-  if (position.offsetLeft >= 0 && position.offsetLeft<= 100){
+  if (position.offsetLeft >= 0 && position.offsetLeft <= 300){
     directlyAbove=1;
   }
-  else if(position.offsetLeft >= 200 && position.offsetLeft <= 300){
+  else if(position.offsetLeft >= 350 && position.offsetLeft <= 550){
     directlyAbove=2;
   }
-  else if(position.offsetLeft >= 400 && position.offsetleft <= 500){
+  else if(position.offsetLeft >= 600 && position.offsetLeft <= 750){
     directlyAbove=3;
   }
-  else if(position.offsetLeft >= 700 && position.offsetLeft <= 800){
+  else if(position.offsetLeft >= 1000){
     directlyAbove=4;
   }
   return directlyAbove;
@@ -25,17 +25,19 @@ let scoreElement = document.getElementById("score");
 
 $(document).ready(()=>{
   $("#left").click(()=>{
-      $("#claw").animate({left:'+=250px'});
+      $("#claw").animate({left:'+=200px'});
     
   });
   $("#right").click(()=>{
-    $("#claw").animate({left:'-=250px'});
+    $("#claw").animate({left:'-=200px'});
   });
   
   $("#down").click(()=>{
     $("#claw").animate({top:'+=500px'});
-    $("#claw").animate({top:'-=500px'})
+    $("#claw").animate({top:'-=500px'});
+    console.log(checkPosition());
     if(checkPosition()===1){
+      updateScore();
       $("#yoda").fadeOut(); 
     }
       
